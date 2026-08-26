@@ -99,7 +99,7 @@ export default function SiteClient() {
       <section className="section status-section"><div className="status-pulse" aria-hidden="true"><span /></div><div><p className="section-label">{t.current.label}</p><h2>{t.current.main}<br /><span>{t.current.secondary}</span></h2><p>{t.current.description}</p></div></section>
       <section className="section vision-section"><p className="section-label">{t.vision.label}</p><h2>{t.vision.statement}</h2></section>
       <section className="section contact-section" id="contact"><p className="section-label">{t.contact.label}</p><h2>{t.contact.titleA}<br /><span>{t.contact.titleB}</span></h2><p>{t.contact.supporting}</p><div className="actions"><a className="button primary" href={t.contact.primaryHref}>{t.contact.primaryCta}<b>{arrow}</b></a><a className="button secondary" href={t.contact.secondaryHref}>{t.contact.secondaryCta}<b>{arrow}</b></a></div><div className="contact-meta"><a href={`mailto:${t.contact.generalEmail}`}>{t.contact.generalEmail}</a><a href={`mailto:${t.contact.partnershipsEmail}`}>{t.contact.partnershipsEmail}</a><a href="https://nawwsaj.com">{t.contact.website}</a></div></section>
-      <footer><a className="brand" href="#top"><span className="brand-mark">N</span><span>Nawwsaj</span></a><span>{t.footer.copyright} · <a href="/picks">{language === "ar" ? "مختارات نوّسج" : "Nawwsaj Picks"}</a></span><a href="#top">{t.footer.back}</a></footer>
+      <footer><a className="brand" href="#top"><span className="brand-mark">N</span><span>Nawwsaj</span></a><span>{t.footer.copyright} · <a href="/picks">{language === "ar" ? "مختارات نوسج" : "Nawwsaj Picks"}</a></span><a href="#top">{t.footer.back}</a></footer>
     </main>
   );
 }

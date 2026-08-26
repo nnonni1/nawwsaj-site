@@ -3,44 +3,99 @@ import Image from "next/image";
 import Link from "next/link";
 import { picks } from "@/content/picks";
 
+const picksTitle = "مختارات نوسج | أفضل أجهزة للبرمجة والذكاء الاصطناعي والعمل";
+const picksDescription = "مختارات أجهزة للبرمجة، التجارة الإلكترونية، الذكاء الاصطناعي المحلي، صناعة المحتوى و3D. مقارنة عملية بين Mini PC، لابتوبات، شاشات وكاميرات مختارة بعناية.";
+const picksUrl = "https://www.nawwsaj.com/picks";
+const faqItems = [
+  {
+    question: "هل Mini PC مناسب للبرمجة؟",
+    answer: "نعم، أجهزة Mini PC الحديثة بذاكرة 32GB ومعالج Ryzen 7 أو Core i9 مناسبة جدًا للبرمجة، Docker، الخوادم المحلية وتعدد المهام.",
+  },
+  {
+    question: "هل أحتاج RTX لتشغيل الذكاء الاصطناعي محليًا؟",
+    answer: "ليس دائمًا. النماذج الصغيرة يمكن تشغيلها على CPU وRAM، لكن RTX يصبح مهمًا عند تشغيل نماذج أكبر، توليد الصور، CUDA والرندر.",
+  },
+  {
+    question: "هل 32GB RAM مهمة للبرمجة؟",
+    answer: "ليست ضرورية لكل شخص، لكنها مفيدة جدًا إذا كنت تستخدم Docker، VMs، أدوات تطوير متعددة، متصفحًا ثقيلًا أو نماذج AI محلية.",
+  },
+  {
+    question: "QHD أم 4K للبرمجة؟",
+    answer: "QHD على شاشة 27 بوصة عادة يقدم توازنًا ممتازًا بين وضوح النصوص، مساحة العمل والأداء بدون الحاجة إلى GPU قوي.",
+  },
+];
+
 export const metadata: Metadata = {
-  title: "مختارات نوّسج | أفضل أجهزة للبرمجة والذكاء الاصطناعي والعمل",
-  description: "مختارات أجهزة للبرمجة، التجارة الإلكترونية، الذكاء الاصطناعي المحلي، صناعة المحتوى و3D. مقارنة عملية بين Mini PC، لابتوبات، شاشات وكاميرات مختارة بعناية.",
-  alternates: { canonical: "/picks" },
+  title: picksTitle,
+  description: picksDescription,
+  alternates: { canonical: picksUrl },
+  robots: { index: true, follow: true },
   openGraph: {
-    title: "مختارات نوّسج | أفضل أجهزة للبرمجة والذكاء الاصطناعي والعمل",
-    description: "مختارات أجهزة للبرمجة، التجارة الإلكترونية، الذكاء الاصطناعي المحلي، صناعة المحتوى و3D.",
-    url: "/picks",
-    images: [],
+    title: picksTitle,
+    description: picksDescription,
+    url: picksUrl,
+    type: "website",
+    siteName: "Nawwsaj",
+    locale: "ar_SA",
+    images: [{ url: "/og.png", width: 1536, height: 1024, alt: "مختارات نوسج للأجهزة التقنية" }],
   },
   twitter: {
-    title: "مختارات نوّسج | أفضل أجهزة للبرمجة والذكاء الاصطناعي والعمل",
-    description: "مختارات أجهزة للبرمجة، التجارة الإلكترونية، الذكاء الاصطناعي المحلي، صناعة المحتوى و3D.",
-    images: [],
+    card: "summary_large_image",
+    title: picksTitle,
+    description: picksDescription,
+    images: ["/og.png"],
   },
 };
 
 export default function PicksPage() {
+  const itemListSchema = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "مختارات نوسج",
+    itemListElement: picks.map((product, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      item: {
+        "@type": "Product",
+        name: product.name,
+        description: product.tagline,
+        image: `https://www.nawwsaj.com${product.imageUrl}`,
+        url: product.affiliateUrl,
+      },
+    })),
+  };
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqItems.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: { "@type": "Answer", text: item.answer },
+    })),
+  };
+
   return (
-    <main className="picks-page" dir="rtl">
+    <main className="picks-page" dir="rtl" lang="ar">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <header className="picks-header">
         <Link className="brand" href="/">
           <span className="brand-mark">N</span>
           <span>Nawwsaj</span>
         </Link>
         <nav aria-label="التنقل">
-          <Link href="/go">روابط نوّسج</Link>
+          <Link href="/go">روابط نوسج</Link>
           <Link href="/">الموقع الرئيسي</Link>
         </nav>
       </header>
 
       <section className="picks-intro">
         <p className="section-label">NAWWSAJ PICKS / 01</p>
-        <h1>مختارات نوّسج</h1>
+        <h1>مختارات نوسج</h1>
         <p className="picks-lead">
           دليل عملي يضم أفضل أجهزة للبرمجة، وMini PC للبرمجة وتشغيل AI Agents، ولابتوبات
           للتجارة الإلكترونية والـ3D وAI، وشاشات QHD مختارة للعمل وصناعة المحتوى. بعض المنتجات
-          جُرّبت فعليًا في نوّسج، وبعضها تم اختياره بناءً على المواصفات والقيمة مقابل السعر.
+          جُرّبت فعليًا في نوسج، وبعضها تم اختياره بناءً على المواصفات والقيمة مقابل السعر.
         </p>
       </section>
 
@@ -51,7 +106,7 @@ export default function PicksPage() {
               {product.imageUrl ? (
                 <Image
                   src={product.imageUrl}
-                  alt={product.name}
+                  alt={`${product.name} — ${product.tagline}`}
                   fill
                   sizes="(max-width: 720px) 100vw, (max-width: 1100px) 50vw, 33vw"
                 />
@@ -105,7 +160,7 @@ export default function PicksPage() {
               className="pick-link"
               href={product.affiliateUrl}
               target="_blank"
-              rel="sponsored nofollow noopener noreferrer"
+              rel="sponsored noopener noreferrer"
             >
               عرض المنتج <span aria-hidden="true">↖</span>
             </a>
@@ -117,22 +172,12 @@ export default function PicksPage() {
         <p className="section-label">FAQ / 04</p>
         <h2 id="picks-faq-title">أسئلة شائعة</h2>
         <div className="faq-grid">
-          <article>
-            <h3>هل Mini PC مناسب للبرمجة؟</h3>
-            <p>نعم، أجهزة Mini PC الحديثة بذاكرة 32GB ومعالج Ryzen 7 أو Core i9 مناسبة جدًا للبرمجة، Docker، الخوادم المحلية وتعدد المهام.</p>
-          </article>
-          <article>
-            <h3>هل أحتاج RTX لتشغيل الذكاء الاصطناعي محليًا؟</h3>
-            <p>ليس دائمًا. النماذج الصغيرة يمكن تشغيلها على CPU وRAM، لكن RTX يصبح مهمًا عند تشغيل نماذج أكبر، توليد الصور، CUDA والرندر.</p>
-          </article>
-          <article>
-            <h3>هل 32GB RAM مهمة للبرمجة؟</h3>
-            <p>ليست ضرورية لكل شخص، لكنها مفيدة جدًا إذا كنت تستخدم Docker، VMs، أدوات تطوير متعددة، متصفحًا ثقيلًا أو نماذج AI محلية.</p>
-          </article>
-          <article>
-            <h3>QHD أم 4K للبرمجة؟</h3>
-            <p>QHD على شاشة 27 بوصة عادة يقدم توازنًا ممتازًا بين وضوح النصوص، مساحة العمل والأداء بدون الحاجة إلى GPU قوي.</p>
-          </article>
+          {faqItems.map((item) => (
+            <article key={item.question}>
+              <h3>{item.question}</h3>
+              <p>{item.answer}</p>
+            </article>
+          ))}
         </div>
       </section>
 
@@ -147,7 +192,7 @@ export default function PicksPage() {
           <span>Nawwsaj</span>
         </Link>
         <span>© 2026 Nawwsaj</span>
-        <Link href="/go">روابط نوّسج</Link>
+        <Link href="/go">روابط نوسج</Link>
       </footer>
     </main>
   );
