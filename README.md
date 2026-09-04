@@ -1,100 +1,68 @@
-# vinext-starter
+# Nawwsaj Innovation Lab
 
-A clean full-stack starter running on
-[vinext](https://github.com/cloudflare/vinext), with optional Cloudflare D1 and
-Drizzle support.
+An innovation and technology development lab for turning ideas and operational challenges into testable products, prototypes, and connected systems.
 
-## Prerequisites
+## Overview
 
-- Node.js `>=22.13.0`
+Nawwsaj is an innovation and technology development lab founded by **Afnan Al-Duhaim**. It provides a hands-on environment for moving from an early idea or an unclear problem to a working prototype, MVP, or technology product that can be tested and evaluated.
 
-## Quick Start
+The lab brings product thinking together with software, AI, automation, hardware, and emerging technologies.
 
-```bash
-npm install
-npm run dev
-npm run build
-```
+## What Nawwsaj Builds
 
-This starter does not use `wrangler.jsonc`.
+- AI-enabled products
+- Automation workflows
+- Connected systems
+- IoT prototypes
+- Rapid MVPs
+- Technology experiments and proofs of concept
 
-## Included Shape
+## Nawwsaj OS
 
-- edit site code under `app/`
-- `.openai/hosting.json` declares optional Sites D1 and R2 bindings
-- `vite.config.ts` simulates declared bindings for local development
-- `db/schema.ts` starts intentionally empty
-- `examples/d1/` contains an optional D1 example surface
-- `drizzle.config.ts` supports local migration generation when needed
+**Nawwsaj OS** is the operating layer within the lab. It is designed to connect AI agents, automation, connected devices, and interactive tools in one innovation workspace.
 
-## Workspace Auth Headers
+The current product presentation explores:
 
-Signed-in visitors receive both `oai-authenticated-user-id` and `oai-authenticated-user-email`. Private Sites require every visitor to sign in; public Sites may also have anonymous visitors, for whom neither header is present.
+- A unified spatial interface for the lab
+- AI-agent and automation integration
+- Connected-device workflows
+- An interactive workbench for building and testing ideas
 
-The user ID is stable for the same user on the same Site and different across Sites. Email and name are intended for display or contact purposes.
+## Technology
 
-SIWC-authenticated workspace sites may also receive
-`oai-authenticated-user-full-name` when the user's SIWC profile has a non-empty
-`name` claim. The full-name value is percent-encoded UTF-8 and is accompanied by
-`oai-authenticated-user-full-name-encoding: percent-encoded-utf-8`.
+The current repository uses:
 
-Treat the full name as optional and fall back to email when it is absent:
+- Next.js 16
+- React 19
+- TypeScript
+- Tailwind CSS 4
+- Vinext and Vite
+- Drizzle ORM with optional Cloudflare D1 support
 
-```tsx
-import { headers } from "next/headers";
+## Screenshots
 
-export default async function Home() {
-  const requestHeaders = await headers();
-  const userId = requestHeaders.get("oai-authenticated-user-id");
-  const email = requestHeaders.get("oai-authenticated-user-email");
-  const encodedFullName = requestHeaders.get("oai-authenticated-user-full-name");
-  const fullName =
-    encodedFullName &&
-    requestHeaders.get("oai-authenticated-user-full-name-encoding") ===
-      "percent-encoded-utf-8"
-      ? decodeURIComponent(encodedFullName)
-      : null;
+### Nawwsaj OS
 
-  const displayName = fullName ?? email;
-  // ...
-}
-```
+![Nawwsaj OS interface](public/nawwsaj-os-hero.png)
 
-## Optional Dispatch-Owned ChatGPT Sign-In
+### Spatial workspace
 
-Import the ready-to-use helpers from `app/chatgpt-auth.ts` when the site needs
-optional or required ChatGPT sign-in:
+![Nawwsaj spatial workspace](public/nawwsaj-spatial-home.png)
 
-- Use `getChatGPTUser()` for optional signed-in UI.
-- Use `requireChatGPTUser(returnTo)` for server-rendered pages that should send
-  anonymous visitors through Sign in with ChatGPT.
-- Use `chatGPTSignInPath(returnTo)` and `chatGPTSignOutPath(returnTo)` for
-  browser links or actions.
-- Pass a same-origin relative `returnTo` path for the destination after sign-in
-  or sign-out. The helper validates and safely encodes it.
-- Mark protected pages with `export const dynamic = "force-dynamic"` because
-  they depend on per-request identity headers.
+### Interactive workbench
 
-Dispatch owns `/signin-with-chatgpt`, `/signout-with-chatgpt`, `/callback`, the
-OAuth cookies, and identity header injection. Do not implement app routes for
-those reserved paths. Routes that do not import and call the helper remain
-anonymous-compatible.
+![Nawwsaj interactive workbench](public/interactive-workbench.png)
 
-SIWC establishes identity only; it does not prove workspace membership. Use the
-Sites hosting platform's access policy controls for workspace-wide restrictions,
-or enforce explicit server-side membership or allowlist checks.
+## Live Demo
 
-Use SIWC for account pages, user-specific dashboards, saved records, and write
-actions tied to the current ChatGPT user. Leave public content anonymous.
+[Visit the live Nawwsaj website](https://nawwsaj-site.vercel.app)
 
-## Useful Commands
+## Founder
 
-- `npm run dev`: start local development
-- `npm run build`: verify the vinext build output
-- `npm test`: build the starter and verify its rendered loading skeleton
-- `npm run db:generate`: generate Drizzle migrations after schema changes
+**Afnan Al-Duhaim**<br>
+Technology Product Builder<br>
+[View Afnan's portfolio](https://afnan-ahmad-portfolio.vercel.app)
 
-## Learn More
+## Status
 
-- [vinext Documentation](https://github.com/cloudflare/vinext)
-- [Drizzle D1 Guide](https://orm.drizzle.team/docs/get-started/d1-new)
+Active development.
