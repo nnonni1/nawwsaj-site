@@ -87,7 +87,18 @@ p { text-wrap: pretty; }
 }
 .schematic-core, .map-core { background: radial-gradient(circle, #15356c, var(--panel) 76%); border-color: var(--cyan); }
 .schematic-node, .map-node, .core-node, .node-label, .os-plane, .plane-front { background-color: var(--panel); border-color: #385078; color: var(--muted); }
-.map-node b { color: var(--ink); font-size: 11px; }
+.map-node {
+  width: clamp(124px, 12vw, 160px);
+  min-width: 0;
+  box-sizing: border-box;
+}
+.map-node b {
+  color: var(--ink);
+  font-size: 11px;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+}
+.map-node-8 { left: 4%; }
 .map-node:hover { background: var(--panel-raised); border-color: var(--cyan); }
 .map-lines i:nth-child(6) { background: linear-gradient(90deg, #855bff77, transparent); }
 .os-status { color: var(--muted); }
