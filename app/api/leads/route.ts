@@ -4,6 +4,7 @@ import {
   LeadRepositoryConfigurationError,
   SupabaseLeadRepository,
 } from "@/lib/leads/supabase-lead-repository";
+import { sendLeadNotification } from "@/lib/leads/notification";
 
 export const runtime = "nodejs";
 
@@ -26,6 +27,13 @@ export async function POST(request: Request) {
     const result = await createLead(payload, repository);
     if (!result.success) {
       return NextResponse.json({ ok: false, type: "validation", errors: result.errors }, { status: 422 });
+    }
+
+    try {
+      await sendLeadNotification(result.lead);
+    } catch {
+      // The lead is already stored. Keep the response successful and avoid logging lead data.
+      console.error("Lead notification email failed.");
     }
 
     return NextResponse.json(

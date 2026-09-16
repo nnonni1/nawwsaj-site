@@ -1,0 +1,149 @@
+/* Shared Nawwsaj OS identity. Imported last, across every route. */
+:root, .signal-site {
+  --bg: #030613;
+  --panel: #090e23;
+  --panel-raised: #101832;
+  --ink: #eff7ff;
+  --muted: #a5b4ce;
+  --line: #263756;
+  --cyan: #20dfff;
+  --blue: #398bff;
+  --violet: #855bff;
+  --magenta: var(--violet);
+  --emerald: var(--cyan);
+  --font-sans: var(--font-arabic), Tahoma, Arial, sans-serif;
+  --font-mono: var(--font-technical), var(--font-arabic), monospace;
+  --brand-wash: radial-gradient(ellipse at 12% 16%, #398bff0b, transparent 55%), radial-gradient(ellipse at 88% 80%, #855bff0b, transparent 55%);
+  --brand-gradient: linear-gradient(110deg, var(--cyan), var(--blue) 60%, var(--violet));
+}
+body, .signal-site, .services-page, .picks-page, .links-page, .suhail-page {
+  background: var(--bg); color: var(--ink); font-family: var(--font-sans);
+}
+::selection { background: #855bff66; color: #fff; }
+:focus-visible { outline: 2px solid var(--cyan); outline-offset: 5px; }
+button, input, textarea, select { font-family: inherit; }
+h1, h2, h3 { text-wrap: balance; }
+p { text-wrap: pretty; }
+/* One continuous navy environment; all sections draw from the same palette. */
+.signal-site > section, .services-page > section, .picks-page > section,
+.suhail-page > section, .links-shell {
+  background-color: var(--bg); background-image: var(--brand-wash); border-color: var(--line);
+}
+.signal-site > section:not(.signal-hero) { border-top: 1px solid var(--line); }
+.signal-site > section:nth-of-type(even) { background-color: #060a1b; }
+.signal-header, .services-header, .picks-header, .project-header, .site-header, .lab-header {
+  background: #030613ed; border-color: var(--line); color: var(--ink);
+}
+.signal-footer, .services-footer, .picks-footer, .lab-footer {
+  background: var(--bg); border-color: var(--line); color: var(--muted);
+}
+.signal-brand, .brand, .links-brand { color: var(--ink); }
+.signal-brand-mark, .brand-mark { border-color: var(--cyan); color: var(--cyan); background: #102142; border-radius: 9px; }
+.signal-brand small, .brand small { color: var(--muted); }
+.signal-header nav, .signal-header-cta, .header-cta, .project-header > a:last-child,
+.services-header > a:last-child, .picks-header > a:last-child { font-family: var(--font-sans); font-size: 14px; letter-spacing: 0; }
+.signal-kicker, .section-label, .links-kicker { color: #8edbff; font-size: 11px; line-height: 1.7; }
+.signal-header-cta, .header-cta { min-height: 44px; border-color: #4674ac; border-radius: 8px; }
+.hero-copy h1 { font-family: var(--font-sans); font-size: clamp(68px, 7.5vw, 118px); line-height: 1.22; letter-spacing: -.025em; margin: 22px 0 28px; }
+.hero-copy h1 span { padding: 0; }
+.hero-copy h1 span:nth-child(2) { color: var(--ink); }
+.hero-copy h1 em { padding: 0 0 .12em; background-image: var(--brand-gradient); }
+.hero-lower { grid-template-columns: 1fr; gap: 28px; }
+.hero-lower > p { color: var(--muted); font-size: 18px; line-height: 1.95; }
+.signal-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+.signal-button, .button, .service-button, .pick-link, .modal-secondary {
+  font-family: var(--font-sans); font-size: 15px; font-weight: 600; letter-spacing: 0;
+  min-height: 48px; border-radius: 9px; transition: transform .2s, border-color .2s, background-color .2s;
+}
+.signal-button.is-primary, .button.primary, .service-button:not(.is-disabled), .pick-link {
+  background: var(--brand-gradient); color: #020817; border: 1px solid #71dcff;
+}
+.signal-button.is-ghost, .button.secondary, .modal-secondary {
+  background: var(--panel); color: var(--ink); border: 1px solid #3b517b;
+}
+.signal-button:hover, .button:hover, .service-button:not(.is-disabled):hover, .pick-link:hover { box-shadow: 0 8px 28px #398bff22; }
+.signal-button.is-primary { min-width: 190px; }
+.service-heading h2, .ecosystem-copy h2, .signal-process h2, .os-copy h2,
+.suhail-field-copy h2, .signal-future h2, .start-copy h2 {
+  font-size: clamp(38px, 4.5vw, 70px); line-height: 1.35; letter-spacing: -.02em;
+}
+.service-heading h2 span, .ecosystem-copy h2 span, .start-copy h2 span,
+.suhail-field-copy h2 span, .signal-future h2 span { color: #9bbaff; }
+.service-heading > p:last-child, .ecosystem-copy > p:last-child, .os-copy > p:not(.signal-kicker),
+.suhail-field-copy > p:not(.signal-kicker), .start-copy > p:not(.signal-kicker),
+.signal-process p, .service-module-body p, .future-track p { color: var(--muted); font-size: 17px; line-height: 1.95; }
+.service-modules article, .service-modules, .future-track, .future-track article, .os-status span { border-color: var(--line); }
+.service-modules h3 { font-size: clamp(24px, 2.7vw, 36px); line-height: 1.55; }
+.service-module-body li { color: var(--muted); font-size: 14px; line-height: 1.8; }
+.service-module-body a { color: var(--cyan); font-size: 15px; min-height: 44px; align-items: center; }
+.service-modules article.is-active .service-module-body { max-height: 560px; }
+.service-modules article.is-active { background: linear-gradient(90deg, transparent, #398bff08); }
+.service-modules button > span, .service-modules button small, .process-sticky > p,
+.future-track article > span, .future-track small, .stage-readout, .stage-readout b { color: #9db8df; }
+.service-visual-stage, .service-visual-stage[data-active="1"], .service-visual-stage[data-active="2"] {
+  border-color: var(--line); background-color: var(--panel);
+  background-image: radial-gradient(circle, #398bff20, transparent 48%), linear-gradient(#20dfff0b 1px, transparent 1px), linear-gradient(90deg,#20dfff0b 1px, transparent 1px);
+  border-radius: 18px;
+}
+.schematic-core, .map-core { background: radial-gradient(circle, #15356c, var(--panel) 76%); border-color: var(--cyan); }
+.schematic-node, .map-node, .core-node, .node-label, .os-plane, .plane-front { background-color: var(--panel); border-color: #385078; color: var(--muted); }
+.map-node b { color: var(--ink); font-size: 11px; }
+.map-node:hover { background: var(--panel-raised); border-color: var(--cyan); }
+.map-lines i:nth-child(6) { background: linear-gradient(90deg, #855bff77, transparent); }
+.os-status { color: var(--muted); }
+.plane-screen { border-radius: 14px; }
+.field-node { color: var(--ink); background: var(--panel); border-color: var(--cyan); }
+.suhail-field-copy ul { flex-wrap: wrap; }
+.suhail-field-copy li, .project-tags span, .services-disciplines span { background: var(--panel); border-color: #344b76; color: #adc7ef; }
+.suhail-system, .suhail-core { background-color: var(--panel); color: var(--cyan); border-color: var(--cyan); }
+.suhail-orbit { border-color: #398bff77; }
+.suhail-orbit.orbit-two { border-color: #855bff77; }
+.project-status, .project-status i { color: var(--cyan); }
+.project-status i { background: var(--cyan); box-shadow: 0 0 14px #20dfff55; }
+.service-card, .pick-card, .link-panel, .suhail-detail-grid article,
+.services-faq-grid details, .faq-grid details, .services-process li {
+  background: linear-gradient(135deg, #398bff08, transparent 65%), var(--panel);
+  border-color: var(--line); border-radius: 14px;
+}
+.link-panel:hover, .pick-card:hover { background-color: var(--panel-raised); border-color: #497db6; }
+.service-card h2, .pick-card h2 { color: var(--ink); }
+.services-lead, .picks-lead, .suhail-lead, .service-description, .pick-description,
+.pick-highlights, .pick-specs, .service-card ul, .suhail-detail-grid p, .links-shell > p { color: var(--muted); }
+.service-duration, .service-includes-label, .pick-list-label, .link-index, .pick-tagline { color: #8fcdff; }
+.service-note, .services-review-note, .pick-note, .affiliate-note { color: var(--muted); border-color: var(--line); }
+.service-modal, .signal-start .lab-lead-form { background: var(--panel); border-color: #385078; border-radius: 16px; }
+.signal-start .lead-field input, .signal-start .lead-field textarea, .signal-start .lead-field select,
+.service-fields input, .service-fields textarea, .service-fields select {
+  background: var(--bg); border: 1px solid #3b517b; border-radius: 8px; color: var(--ink); font: 16px var(--font-sans); min-height: 48px;
+}
+.lead-field label, .service-fields label { color: var(--ink); font-size: 14px; }
+.signal-start .lead-field :is(input,textarea,select):focus, .service-fields :is(input,textarea,select):focus { border-color: var(--cyan); box-shadow: 0 0 0 3px #20dfff16; }
+.start-copy > a, .signal-footer, .services-footer, .picks-footer { font-size: 13px; }
+.start-copy > a span { color: var(--cyan); font-size: 17px; }
+.planet-label strong { font-family: var(--font-sans); }
+.lab-core { scroll-margin-top: 84px; }
+@supports (color: color-mix(in oklch, white, black)) {
+  :root, .signal-site { --line: color-mix(in oklch, var(--blue) 26%, var(--bg)); }
+}
+@media(max-width:1000px) {
+  .hero-copy h1 { font-size: clamp(56px, 9vw, 90px); }
+  .lab-core { width: min(85vw, 650px); margin: 0; }
+}
+@media(max-width:620px) {
+  .signal-header { padding-inline: 18px; }
+  .signal-header-cta { font-size: 12px; padding-inline: 12px; }
+  .signal-hero { padding-top: 104px; }
+  .hero-copy h1 { font-size: clamp(46px, 12.4vw, 72px); line-height: 1.25; letter-spacing: -.02em; }
+  .hero-lower > p { font-size: 16px; }
+  .signal-actions { display: grid; grid-template-columns: 1fr 1fr; }
+  .signal-button, .signal-button.is-primary { min-width: 0; font-size: 14px; gap: 12px; }
+  .lab-core { width: 90vw; margin: 12px 0 0; }
+  .signal-kicker, .section-label { font-size: 10px; letter-spacing: .08em; }
+  .service-heading h2, .ecosystem-copy h2, .signal-process h2, .os-copy h2,
+  .suhail-field-copy h2, .signal-future h2, .start-copy h2 { font-size: 38px; line-height: 1.4; }
+  .service-modules article.is-active .service-module-body { max-height: 780px; }
+  .service-module-body ul { grid-template-columns: 1fr; }
+  .map-node b { font-size: 9px; }
+  .suhail-field-copy li { font-size: 10px; }
+}
+@media(prefers-reduced-motion:reduce) { html { scroll-behavior: auto; } }

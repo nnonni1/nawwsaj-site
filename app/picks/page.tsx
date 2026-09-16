@@ -26,7 +26,7 @@ const faqItems = [
 ];
 
 export const metadata: Metadata = {
-  title: picksTitle,
+  title: { absolute: picksTitle },
   description: picksDescription,
   alternates: { canonical: picksUrl },
   robots: { index: true, follow: true },

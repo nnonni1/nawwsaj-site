@@ -20,7 +20,7 @@ test("positions Nawwsaj as an innovation lab with three focused services", async
   assert.match(home, /Suhail/);
   assert.match(home, /HomeLeadForm/);
   assert.equal((content.match(/cta: "/g) ?? []).length, 3);
-  assert.match(layout, /Nawwsaj Innovation Lab \| من الفكرة إلى نموذج يعمل/);
+  assert.match(layout, /Nawwsaj Innovation Lab \| تطوير MVP والذكاء الاصطناعي وIoT في الرياض/);
   assert.match(layout, /lang="ar"/);
   assert.match(layout, /dir="rtl"/);
 });
@@ -44,6 +44,6 @@ test("keeps Suhail and service routes present", async () => {
   ]);
 
   assert.match(suhail, /LoRa/);
-  assert.match(suhail, /Edge systems/);
+  assert.match(suhail, /Edge Systems/);
   assert.match(services, /ServiceRequest/);
 });
